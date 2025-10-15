@@ -912,9 +912,6 @@ rm -f ext/date/tests/timezone_version_get_basic1.phpt
 rm -f ext/sockets/tests/mcast_ipv?_recv.phpt
 # Should be skipped but fails sometime
 rm ext/standard/tests/file/file_get_contents_error001.phpt
-# cause stack exhausion
-rm Zend/tests/bug54268.phpt
-rm Zend/tests/bug68412.phpt
 
 # Safety check for API version change.
 # TODO: REVISIT ON RELEASE
