@@ -34,10 +34,10 @@
         "pkg_php_zend_api": "%{zendver}",
         "pkg_php_pdo_api": "%{pdover}",
         "pkg_php_version": "%{version}",
-        "pkg_php_extdir": "/opt/cpanel/ea-php84/root/usr/lib64/php/modules",
-        "pkg_php_inidir": "/opt/cpanel/ea-php84/root/etc/php.d",
-        "pkg_php_incldir": "/opt/cpanel/ea-php84/root/usr/include/php",
-        "pkg___php": "/opt/cpanel/ea-php84/root/usr/bin/php"
+        "pkg_php_extdir": "/opt/cpanel/ea-php85/root/usr/lib64/php/modules",
+        "pkg_php_inidir": "/opt/cpanel/ea-php85/root/etc/php.d",
+        "pkg_php_incldir": "/opt/cpanel/ea-php85/root/usr/include/php",
+        "pkg___php": "/opt/cpanel/ea-php85/root/usr/bin/php"
     },
     "add_to_build_requires": [
         "libsqlite3-dev",
@@ -55,25 +55,25 @@
         "re2c"
     ],
     "add_to_requires": {
-        "ea-php84-php-imap": [ "libc-client2007e" ],
-        "ea-php84-php-dba": [ "libtokyocabinet9" ],
-        "ea-php84-php-odbc": [ [ "libodbc1", "libodbc2" ] ],
-        "ea-php84-php-pdo": [ "libpq5", [ "libodbc1", "libodbc2" ] ],
-        "ea-php84-php-pgsql": [ "libpq5" ],
-        "ea-php84-php-pspell": [ "libaspell15" ],
-        "ea-php84-php-snmp": [ "snmp-mibs-downloader" ],
-        "ea-php84-php-sodium": [ "ea-php84-php-common", "libsodium23" ]
+        "ea-php85-php-imap": [ "libc-client2007e" ],
+        "ea-php85-php-dba": [ "libtokyocabinet9" ],
+        "ea-php85-php-odbc": [ [ "libodbc1", "libodbc2" ] ],
+        "ea-php85-php-pdo": [ "libpq5", [ "libodbc1", "libodbc2" ] ],
+        "ea-php85-php-pgsql": [ "libpq5" ],
+        "ea-php85-php-pspell": [ "libaspell15" ],
+        "ea-php85-php-snmp": [ "snmp-mibs-downloader" ],
+        "ea-php85-php-sodium": [ "ea-php85-php-common", "libsodium23" ]
     },
     "remove_from_install": [
         "libphp7.so",
-        "ea-php84-php.gif"
+        "ea-php85-php.gif"
     ],
     "do_not_build_packages": [
-        "ea-php84-php",
-        "ea-php84-php-xmlrpc",
-        "ea-php84-php-interbase",
-        "ea-php84-php-embedded"
+        "ea-php85-php",
+        "ea-php85-php-xmlrpc",
+        "ea-php85-php-interbase",
+        "ea-php85-php-embedded"
     ],
-    "control_file_source": "ea-php84-php",
+    "control_file_source": "ea-php85-php",
     "fix_dh_usrlocal": 1
 }

@@ -31,9 +31,6 @@ rm -f ext/date/tests/timezone_version_get_basic1.phpt
 rm -f ext/sockets/tests/mcast_ipv?_recv.phpt
 # Should be skipped but fails sometime
 rm ext/standard/tests/file/file_get_contents_error001.phpt
-# cause stack exhausion
-rm Zend/tests/bug54268.phpt
-rm Zend/tests/bug68412.phpt
 
 # TODO: REVISIT ON RELEASE
 # Safety check for API version change.
@@ -100,9 +97,9 @@ sed -e '/opcache.huge_code_pages/s/0/1/' -i 10-opcache.ini
 cp $SOURCE51 .
 sed -e 's:$_root_sysconfdir:$_sysconfdir:' -i 10-opcache.ini
 
-export PKG_CONFIG_PATH=/opt/cpanel/ea-php84/root/usr/%{_lib}/pkgconfig:/opt/cpanel/ea-php84/root/usr/share/pkgconfig:/usr/%{_lib}/pkgconfig:/opt/cpanel/ea-libxml2/%{_lib}/pkgconfig:/opt/cpanel/ea-libicu/lib/pkgconfig:/opt/cpanel/ea-oniguruma/%{_lib}/pkgconfig:/opt/cpanel/libargon2/lib64/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig
+export PKG_CONFIG_PATH=/opt/cpanel/ea-php85/root/usr/%{_lib}/pkgconfig:/opt/cpanel/ea-php85/root/usr/share/pkgconfig:/usr/%{_lib}/pkgconfig:/opt/cpanel/ea-libxml2/%{_lib}/pkgconfig:/opt/cpanel/ea-libicu/lib/pkgconfig:/opt/cpanel/ea-oniguruma/%{_lib}/pkgconfig:/opt/cpanel/libargon2/lib64/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig
 
-export EXTENSION_DIR=/opt/cpanel/ea-php84/root/usr/lib64/php/modules
+export EXTENSION_DIR=/opt/cpanel/ea-php85/root/usr/lib64/php/modules
 export PEAR_INSTALLDIR=${_datadir}/pear
 export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig
 export CFLAGS="-mshstk -l:libcurl.so.4 $CFLAGS"
@@ -149,23 +146,23 @@ fi
     --target=x86_64-pc-linux-gnu \
     --program-prefix= \
     --disable-dependency-tracking \
-    --prefix=/opt/cpanel/ea-php84/root/usr \
-    --exec-prefix=/opt/cpanel/ea-php84/root/usr \
-    --bindir=/opt/cpanel/ea-php84/root/usr/bin \
-    --sbindir=/opt/cpanel/ea-php84/root/usr/sbin \
-    --sysconfdir=/opt/cpanel/ea-php84/root/etc \
-    --datadir=/opt/cpanel/ea-php84/root/usr/share \
-    --includedir=/opt/cpanel/ea-php84/root/usr/include \
-    --libdir=/opt/cpanel/ea-php84/root/usr/lib64 \
-    --libexecdir=/opt/cpanel/ea-php84/root/usr/libexec \
-    --localstatedir=/opt/cpanel/ea-php84/root/var \
-    --sharedstatedir=/opt/cpanel/ea-php84/root/var/lib \
-    --mandir=/opt/cpanel/ea-php84/root/usr/share/man \
-    --infodir=/opt/cpanel/ea-php84/root/usr/share/info \
+    --prefix=/opt/cpanel/ea-php85/root/usr \
+    --exec-prefix=/opt/cpanel/ea-php85/root/usr \
+    --bindir=/opt/cpanel/ea-php85/root/usr/bin \
+    --sbindir=/opt/cpanel/ea-php85/root/usr/sbin \
+    --sysconfdir=/opt/cpanel/ea-php85/root/etc \
+    --datadir=/opt/cpanel/ea-php85/root/usr/share \
+    --includedir=/opt/cpanel/ea-php85/root/usr/include \
+    --libdir=/opt/cpanel/ea-php85/root/usr/lib64 \
+    --libexecdir=/opt/cpanel/ea-php85/root/usr/libexec \
+    --localstatedir=/opt/cpanel/ea-php85/root/var \
+    --sharedstatedir=/opt/cpanel/ea-php85/root/var/lib \
+    --mandir=/opt/cpanel/ea-php85/root/usr/share/man \
+    --infodir=/opt/cpanel/ea-php85/root/usr/share/info \
     --cache-file=../config.cache \
     --with-libdir=lib \
-    --with-config-file-path=/opt/cpanel/ea-php84/root/etc \
-    --with-config-file-scan-dir=/opt/cpanel/ea-php84/root/etc/php.d \
+    --with-config-file-path=/opt/cpanel/ea-php85/root/etc \
+    --with-config-file-scan-dir=/opt/cpanel/ea-php85/root/etc/php.d \
     --disable-debug \
     --with-password-argon2=/opt/cpanel/libargon2 \
     --with-pic \
@@ -192,7 +189,7 @@ fi
     --with-mhash \
     --enable-fpm \
     --with-fpm-systemd \
-    --libdir=/opt/cpanel/ea-php84/root/usr/lib64/php \
+    --libdir=/opt/cpanel/ea-php85/root/usr/lib64/php \
     --with-mysqli=shared \
     --enable-pdo=shared \
     --with-pdo-odbc=shared,unixodbc,/usr \
@@ -204,7 +201,6 @@ fi
     --enable-gd=shared \
     --enable-dba=shared \
     --with-unixODBC=shared \
-    --enable-opcache=shared \
     --enable-xmlreader=shared \
     --enable-xmlwriter=shared \
     --enable-phar=shared \

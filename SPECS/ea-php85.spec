@@ -17,8 +17,8 @@
 %scl_package php
 
 # API/ABI check
-%global apiver      20240924
-%global zendver     20240924
+%global apiver      20250925
+%global zendver     20250925
 %global pdover      20240423
 
 # Adds -z now to the linker flags
@@ -321,6 +321,11 @@ Provides: %{?scl_prefix}php-spl = %{version}-%{release}, %{?scl_prefix}php-spl%{
 Provides: %{?scl_prefix}php-standard = %{version}, %{?scl_prefix}php-standard%{?_isa} = %{version}
 Provides: %{?scl_prefix}php-tokenizer = %{version}-%{release}, %{?scl_prefix}php-tokenizer%{?_isa} = %{version}-%{release}
 Provides: %{?scl_prefix}php-zlib = %{version}-%{release}, %{?scl_prefix}php-zlib%{?_isa} = %{version}-%{release}
+Provides: %{?scl_prefix}php-opcache = %{version}-%{release}, %{?scl_prefix}php-opcache%{?_isa} = %{version}-%{release}
+Provides: %{?scl_prefix}php-pecl-zendopcache = %{version}-%{release}
+Provides: %{?scl_prefix}php-pecl-zendopcache%{?_isa} = %{version}-%{release}
+Provides: %{?scl_prefix}php-pecl(opcache) = %{version}-%{release}
+Provides: %{?scl_prefix}php-pecl(opcache)%{?_isa} = %{version}-%{release}
 %{!?scl:Obsoletes: php-openssl, php-pecl-json, php-json, php-pecl-phar, php-pecl-Fileinfo}
 %{?scl:Requires: %{scl}-runtime}
 
@@ -340,24 +345,6 @@ Requires: pcre2-devel%{?_isa} >= 10.30
 The %{?scl_prefix}php-devel package contains the files needed for building PHP
 extensions. If you need to compile your own PHP extensions, you will
 need to install this package.
-
-%package opcache
-Summary:   The Zend OPcache
-Group:     Development/Languages
-License:   PHP
-Requires: %{?scl_prefix}php-common = %{version}
-Requires: %{?scl_prefix}php-cli%{?_isa} = %{version}-%{release}
-Provides:  %{?scl_prefix}php-pecl-zendopcache = %{version}-%{release}
-Provides:  %{?scl_prefix}php-pecl-zendopcache%{?_isa} = %{version}-%{release}
-Provides:  %{?scl_prefix}php-pecl(opcache) = %{version}-%{release}
-Provides:  %{?scl_prefix}php-pecl(opcache)%{?_isa} = %{version}-%{release}
-
-%description opcache
-The Zend OPcache provides faster PHP execution through opcode caching and
-optimization. It improves PHP performance by storing precompiled script
-bytecode in the shared memory. This eliminates the stages of reading code from
-the disk and compiling it on future access. In addition, it applies a few
-bytecode optimization patterns that make code execution faster.
 
 %package bz2
 Summary: A module for PHP applications that interface with .bz2 files
@@ -1148,7 +1135,6 @@ pushd build-cgi
 
 build --libdir=%{_libdir}/php \
       --enable-pcntl \
-      --enable-opcache \
       --enable-phpdbg \
       --enable-mbstring=shared \
       --enable-litespeed \
@@ -1211,7 +1197,6 @@ popd
 
 without_shared="--disable-gd \
       --disable-dom --disable-dba --without-unixODBC \
-      --disable-opcache \
       --disable-xmlreader --disable-xmlwriter \
       --without-sqlite3 --disable-phar --disable-fileinfo \
       --disable-json \
@@ -1321,7 +1306,7 @@ for mod in pgsql odbc ldap snmp \
     mysqlnd mysqli pdo_mysql \
     mbstring gd dom xsl soap bcmath dba xmlreader xmlwriter \
     simplexml bz2 calendar ctype exif ftp gettext gmp iconv \
-    sockets tokenizer opcache \
+    sockets tokenizer \
     pdo pdo_pgsql pdo_odbc \
     pdo_sqlite sqlite3 \
     enchant \
@@ -1335,9 +1320,6 @@ for mod in pgsql odbc ldap snmp \
 do
     # for extension load order
     case $mod in
-      opcache)
-        # Zend extensions
-        ini=10-${mod}.ini;;
       pdo_*|mysqli|xmlreader)
         # Extensions with dependencies on 20-*
         ini=30-${mod}.ini;;
@@ -1533,8 +1515,8 @@ fi
 %{_localstatedir}/log/php-fpm
 %{_localstatedir}/run/php-fpm
 %{_mandir}/man8/php-fpm.8*
-%dir %{_datadir}/fpm
-%{_datadir}/fpm/status.html
+%dir %{_datadir}/php/fpm
+%{_datadir}/php/fpm/status.html
 %dir %{_sysconfdir}/sysconfig
 %dir %{_mandir}/man8
 %dir %{_localstatedir}/log
@@ -1584,7 +1566,6 @@ fi
 %files process -f files.process
 %files enchant -f files.enchant
 %files mysqlnd -f files.mysqlnd
-%files opcache -f files.opcache
 %defattr(-,root,root,-)
 %config(noreplace) %{_sysconfdir}/php.d/opcache-default.blacklist
 %files zip -f files.zip
