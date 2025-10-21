@@ -1106,7 +1106,7 @@ ln -sf ../configure
     --with-kerberos \
     --enable-shmop \
     --with-sodium=shared \
-    --with-libxml \
+    --with-libxml=/opt/cpanel/ea-libxml2/ \
     --with-system-tzdata \
     --with-mhash \
     $*
