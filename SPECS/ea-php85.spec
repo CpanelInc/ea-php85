@@ -1457,7 +1457,6 @@ fi
 %dir %{_libdir}/php
 %dir %{_libdir}/php/modules
 %dir %{_localstatedir}/lib
-%dir %{_datadir}/php
 
 %files sodium
 %defattr(-, root, root)
