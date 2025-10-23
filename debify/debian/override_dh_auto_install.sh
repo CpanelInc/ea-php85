@@ -170,6 +170,7 @@ mkdir -p ${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/var/run/php-fpm
 mkdir -p ${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/var/log/php-fpm
 mkdir -p ${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/etc/sysconfig/php-fpm
 mkdir -p ${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/usr/share/php
+mkdir -p ${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/usr/share/php/fpm
 mkdir -p ${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/var/lib
 
 cp -R ${DEB_INSTALL_ROOT}/etc/php-fpm.d ${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/etc/php-fpm.d
