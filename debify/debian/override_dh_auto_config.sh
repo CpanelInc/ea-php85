@@ -89,14 +89,6 @@ sed -e "s/@PHP_APIVER@/$apiver$isasuffix/" \
 # php-fpm configuration files for tmpfiles.d
 # TODO echo "d /run/php-fpm 755 root root" >php-fpm.tmpfiles
 
-# Some extensions have their own configuration file
-cp $SOURCE50 10-opcache.ini
-
-sed -e '/opcache.huge_code_pages/s/0/1/' -i 10-opcache.ini
-
-cp $SOURCE51 .
-sed -e 's:$_root_sysconfdir:$_sysconfdir:' -i 10-opcache.ini
-
 export PKG_CONFIG_PATH=/opt/cpanel/ea-php85/root/usr/%{_lib}/pkgconfig:/opt/cpanel/ea-php85/root/usr/share/pkgconfig:/usr/%{_lib}/pkgconfig:/opt/cpanel/ea-libxml2/%{_lib}/pkgconfig:/opt/cpanel/ea-libicu/lib/pkgconfig:/opt/cpanel/ea-oniguruma/%{_lib}/pkgconfig:/opt/cpanel/libargon2/lib64/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig
 
 export EXTENSION_DIR=/opt/cpanel/ea-php85/root/usr/lib64/php/modules
