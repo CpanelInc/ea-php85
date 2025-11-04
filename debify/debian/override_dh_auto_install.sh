@@ -129,8 +129,10 @@ cat files.sqlite3 >> files.pdo
 cat files.json files.phar \
     files.ctype \
     files.tokenizer > files.common
-# The default Zend OPcache blacklist file
-install -m 644 $SOURCE51 $DEB_INSTALL_ROOT$_sysconfdir/php.d/opcache-default.blacklist
+# Install OPcache blacklist and ini from SOURCES
+install -m 0644 "$SOURCE51" "$DEB_INSTALL_ROOT$_sysconfdir/php.d/opcache-default.blacklist"
+install -m 0644 "$SOURCE52" "$DEB_INSTALL_ROOT$_sysconfdir/php.d/99-opcache-blacklist.ini"
+
 # Install the macros file:
 install -d $DEB_INSTALL_ROOT/$_sysconfdir/rpm
 install -m 644 -c macros.php \

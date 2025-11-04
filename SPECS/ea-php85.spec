@@ -125,8 +125,8 @@ Source7: php-fpm.logrotate
 Source8: php-fpm.sysconfig
 Source11: php-fpm.init
 # Configuration files for some extensions
-Source50: 10-opcache.ini
 Source51: opcache-default.blacklist
+Source52: 99-opcache-blacklist.ini
 
 Patch42: 0001-EA4-OBS-ready.patch
 
@@ -960,17 +960,6 @@ sed -e "s/@PHP_APIVER@/%{apiver}%{isasuffix}/" \
 # php-fpm configuration files for tmpfiles.d
 # TODO echo "d /run/php-fpm 755 root root" >php-fpm.tmpfiles
 
-# Some extensions have their own configuration file
-cp %{SOURCE50} 10-opcache.ini
-%ifarch x86_64
-sed -e '/opcache.huge_code_pages/s/0/1/' -i 10-opcache.ini
-%endif
-cp %{SOURCE51} .
-sed -e 's:%{_root_sysconfdir}:%{_sysconfdir}:' \
-    -i 10-opcache.ini
-
-
-
 %build
 %if 0%{?rhel} == 7
 . /opt/rh/devtoolset-8/enable
@@ -1372,6 +1361,9 @@ cat files.phar \
 # The default Zend OPcache blacklist file
 install -m 644 %{SOURCE51} $RPM_BUILD_ROOT%{_sysconfdir}/php.d/opcache-default.blacklist
 
+# Install the ini that points OPcache at the blacklist
+install -m 644 %{SOURCE52} $RPM_BUILD_ROOT%{_sysconfdir}/php.d/99-opcache-blacklist.ini
+
 # Install the macros file:
 install -d $RPM_BUILD_ROOT%{_root_sysconfdir}/rpm
 install -m 644 -c macros.php \
@@ -1457,6 +1449,9 @@ fi
 %dir %{_libdir}/php
 %dir %{_libdir}/php/modules
 %dir %{_localstatedir}/lib
+
+%config(noreplace) %{_sysconfdir}/php.d/opcache-default.blacklist
+%config(noreplace) %{_sysconfdir}/php.d/99-opcache-blacklist.ini
 
 %files sodium
 %defattr(-, root, root)
@@ -1566,7 +1561,6 @@ fi
 %files enchant -f files.enchant
 %files mysqlnd -f files.mysqlnd
 %defattr(-,root,root,-)
-%config(noreplace) %{_sysconfdir}/php.d/opcache-default.blacklist
 %files zip -f files.zip
 
 %changelog
