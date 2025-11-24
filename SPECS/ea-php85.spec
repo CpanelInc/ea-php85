@@ -114,7 +114,7 @@ URL:      http://www.php.net/
 %global litespeed_version 8.1
 
 # Change after RC Versions
-Source0: php-%{version}RC2.tar.gz
+Source0: php-%{version}.tar.bz2
 Source1: https://www.litespeedtech.com/packages/lsapi/php-litespeed-%{litespeed_version}.tgz
 Source2: php.ini
 Source3: macros.php
@@ -848,9 +848,7 @@ inside them.
 %prep
 : Building %{name}-%{version}-%{release} with systemd=%{with_systemd} sqlite3=%{with_sqlite3} tidy=%{with_tidy} zip=%{with_zip}
 
-# Change after RC Versions
-# %setup -q -n php-%{version}
-%setup -q -n php-src-php-%{version}RC2
+%setup -q -n php-%{version}
 
 %patch42 -p1 -b .systemdpackage
 %patch43 -p1 -b .phpize
