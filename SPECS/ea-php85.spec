@@ -113,7 +113,6 @@ URL:      http://www.php.net/
 
 %global litespeed_version 8.1
 
-# Change after RC Versions
 Source0: php-%{version}.tar.bz2
 Source1: https://www.litespeedtech.com/packages/lsapi/php-litespeed-%{litespeed_version}.tgz
 Source2: php.ini
