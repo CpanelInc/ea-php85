@@ -1563,6 +1563,9 @@ fi
 %changelog
 * Thu Dec 18 2025 Dan Muey <daniel.muey@webpros.com> - 8.5.1-1
 - EA-13294: Update ea-php85 from v8.5.0 to v8.5.1
+- Fixed GHSA-8xr5-qppj-gvwj (PDO quoting result null deref). (CVE-2025-14180)
+- Fixed GHSA-h96m-rvf9-jgm2 (Heap buffer overflow in array_merge()). (CVE-2025-14178)
+- Fixed GHSA-3237-qqm7-mfv7 (Information Leak of Memory in getimagesize). (CVE-2025-14177)
 
 * Thu Oct 09 2025 Brian Mendoza <brian.mendoza@webpros.com> - 8.5.0-1
 - EA4-127: First build
