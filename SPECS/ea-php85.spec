@@ -114,9 +114,9 @@ BuildRequires: re2c
 Summary:  PHP scripting language for creating dynamic web sites
 Vendor:   cPanel, Inc.
 Name:     %{?scl_prefix}php
-Version:  8.5.2
+Version:  8.5.3
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4588 for more details
-%define release_prefix 2
+%define release_prefix 1
 Release:  %{release_prefix}%{?dist}.cpanel
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
@@ -1588,6 +1588,9 @@ fi
 %files zip -f files.zip
 
 %changelog
+* Mon Feb 16 2026 Cory McIntire <cory.mcintire@webpros.com> - 8.5.3-1
+- EA-13345: Update ea-php85 from v8.5.2 to v8.5.3
+
 * Wed Jan 21 2026 Gary Stanley <gary.stanley@webpros.com> - 8.5.2-2
 - EA4-230: Use system libxml2 in PHP 8.5
 * Wed Jan 21 2026 Cory McIntire <cory.mcintire@webpros.com> - 8.5.2-1
