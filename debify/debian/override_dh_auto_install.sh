@@ -214,7 +214,10 @@ install -DT ${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/usr/share/doc/ea-php85-
 install -DT ${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/usr/share/doc/ea-php85-php-common-${pkg_php_version}/php.ini-production ${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/usr/share/doc/ea-php85-php-common/php.ini-production
 install -DT ${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/usr/share/doc/ea-php85-php-mbstring-${pkg_php_version}/libmbfl_LICENSE ${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/usr/share/doc/ea-php85-php-mbstring/libmbfl_LICENSE
 install -DT ${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/usr/share/licenses/ea-php85-php-bcmath-${pkg_php_version}/libbcmath_LICENSE ${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/usr/share/licenses/ea-php85-php-bcmath/libbcmath_LICENSE
-install -DT ${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/usr/share/doc/ea-php85-php-common-8.2.0rc3/README.md ${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/usr/share/doc/ea-php85-php-common/README.md
+# Fallback: install README.md directly from source in case the versioned path was not created
+if [ ! -f "${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/usr/share/doc/ea-php85-php-common/README.md" ]; then
+    [ -f "./README.md" ] && install -DT ./README.md "${DEB_INSTALL_ROOT}/opt/cpanel/ea-php85/root/usr/share/doc/ea-php85-php-common/README.md"
+fi
 
 echo "FILELIST"
 find . -type f -print
