@@ -1588,7 +1588,7 @@ fi
 %files zip -f files.zip
 
 %changelog
-* Fri Apr 24 2026 Heekyoung Park <heekyoung.park@webpros.com> - 8.5.6-2
+* Fri May 08 2026 Heekyoung Park <heekyoung.park@webpros.com> - 8.5.6-2
 - EA4-260: Build for Ubuntu 26.04
 
 * Thu May 07 2026 Cory McIntire <cory.mcintire@webpros.com> - 8.5.6-1
