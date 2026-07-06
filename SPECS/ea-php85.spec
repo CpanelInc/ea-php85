@@ -1590,6 +1590,7 @@ fi
 %changelog
 * Sat Jul 04 2026 EA4 Update Bot <cory.mcintire@webpros.com> - 8.5.8-1
 - EA-13485: Update ea-php85 from v8.5.7 to v8.5.8
+- Fixed bug GH-22187 (Memory corruption in openssl_encrypt with AES-WRAP-PAD). (CVE-2026-14355)
 
 * Fri Jun 05 2026 EA4 Update Bot <cory.mcintire@webpros.com> - 8.5.7-1
 - EA-13456: Update ea-php85 from v8.5.6 to v8.5.7
