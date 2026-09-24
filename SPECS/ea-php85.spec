@@ -114,9 +114,9 @@ BuildRequires: re2c
 Summary:  PHP scripting language for creating dynamic web sites
 Vendor:   cPanel, Inc.
 Name:     %{?scl_prefix}php
-Version:  8.5.10
+Version:  8.5.11
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4588 for more details
-%define release_prefix 2
+%define release_prefix 1
 Release:  %{release_prefix}%{?dist}.cpanel
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
@@ -1588,6 +1588,9 @@ fi
 %files zip -f files.zip
 
 %changelog
+* Thu Sep 24 2026 EA4 Update Bot <cory.mcintire@webpros.com> - 8.5.11-1
+- EA-13565: Update ea-php85 from v8.5.10 to v8.5.11
+
 * Mon Sep 14 2026 Heekyoung Park <heekyoung.park@webpros.com> - 8.5.10-2
 - EA4-326: Fix php-intl to link against ea-libicu on AlmaLinux 9
 
