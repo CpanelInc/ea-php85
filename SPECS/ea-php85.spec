@@ -116,7 +116,7 @@ Vendor:   cPanel, Inc.
 Name:     %{?scl_prefix}php
 Version:  8.5.11
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4588 for more details
-%define release_prefix 1
+%define release_prefix 2
 Release:  %{release_prefix}%{?dist}.cpanel
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
@@ -744,9 +744,15 @@ Requires: libjpeg-turbo%{?_isa}, libpng%{?_isa}, libXpm%{?_isa}, freetype%{?_isa
 BuildRequires: libjpeg-turbo-devel%{?_isa}, libpng-devel%{?_isa}, libXpm-devel%{?_isa}, freetype-devel%{?_isa}
 Requires: libwebp%{?_isa}
 BuildRequires: libwebp-devel%{?_isa}
+
 %if %{with_avif}
-Requires: libavif%{?_isa}
-BuildRequires: libavif-devel%{?_isa}
+%if 0%{?rhel} == 9
+Requires: libavif >= 1.0
+BuildRequires: libavif-devel >= 1.0
+%else
+Requires: libavif
+BuildRequires: libavif-devel
+%endif
 %endif
 
 %description gd
@@ -1588,6 +1594,9 @@ fi
 %files zip -f files.zip
 
 %changelog
+* Wed Sep 30 2026 Dan Muey <daniel.muey@webpros.com> - 8.5.11-2
+- EA4-334: Fixup avif deps to work with A9 EPEL conflict
+
 * Thu Sep 24 2026 EA4 Update Bot <cory.mcintire@webpros.com> - 8.5.11-1
 - EA-13565: Update ea-php85 from v8.5.10 to v8.5.11
 
